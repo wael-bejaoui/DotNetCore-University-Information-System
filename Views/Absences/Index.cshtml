@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Project_college.Models.Absence>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<span class="badge badge-primary">Absences</span>
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etudiant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cour)
+            </th>
+            <th><a asp-action="Create" class="btn btn-outline-success"><i class="far fa-plus-square"></i> Absence</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-active">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etudiant.cin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cour.name)
+                </td>
+                <td>
+                <td>
+                    <a asp-action="Create" asp-route-id="@item.AbsenceId"><i class="fa fa-marker fa-lg"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.AbsenceId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

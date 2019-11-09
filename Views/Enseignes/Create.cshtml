@@ -1,0 +1,40 @@
+﻿@model Project_college.Models.Enseigne
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<span class="badge badge-primary">Enseigne Register</span>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ClasseId" class="control-label"></label>
+                    <select asp-for="ClasseId" class="form-control" asp-items="ViewBag.ClasseId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EnseignantId" class="control-label"></label>
+                    <select asp-for="EnseignantId" class="form-control" asp-items="ViewBag.EnseignantId"></select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Back to List</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

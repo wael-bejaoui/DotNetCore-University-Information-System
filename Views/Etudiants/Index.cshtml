@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Project_college.Models.Etudiant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<span class="badge badge-primary">Etudiant</span>
+
+
+
+<table class="table">
+    <thead>
+        <tr class="table-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cin)
+            </th>
+            <th><a asp-action="Create" class="btn btn-outline-success"><i class="far fa-plus-square"></i> Etudiant</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-active">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cin)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EtudiantId"><i class="fa fa-marker fa-lg"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.EtudiantId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
